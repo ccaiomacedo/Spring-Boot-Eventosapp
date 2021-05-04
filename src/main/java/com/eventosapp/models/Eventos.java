@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity //estou declarando essa classe como entidade ,ou seja, ela será a tabela  
 public class Eventos implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -15,8 +15,8 @@ public class Eventos implements Serializable {
 	private String data;
 	private String horario;
 	private String local;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id //passando codigo como chave primaria
+	@GeneratedValue(strategy = GenerationType.AUTO)//colocando pra ele auto implementar
 	private Long codigo;
 
 	public Long getCodigo() {

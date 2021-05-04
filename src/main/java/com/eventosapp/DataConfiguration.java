@@ -13,6 +13,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 public class DataConfiguration {
 	@Bean
 	public DataSource dataSource() {
+		//faz a conexão com o banco de dados
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/eventosapp");
@@ -25,7 +26,7 @@ public class DataConfiguration {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setDatabase(Database.MYSQL);
 		adapter.setShowSql(true);
-		adapter.setGenerateDdl(true);
+		adapter.setGenerateDdl(true);//permite que o hibernate crie a tabela automaticamente
 		adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
 		adapter.setPrepareConnection(true);
 		return adapter;		
