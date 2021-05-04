@@ -28,7 +28,7 @@ public class EventosController {
 	@RequestMapping("/eventos")
 	public ModelAndView listaEventos() {
 		ModelAndView mv= new ModelAndView("index");//estou especificando qual classe será renderizada
-		Iterable<Eventos> eventos = er.findAll();//retorna uma lista
+		Iterable<Eventos> eventos = er.findAll();//retorna uma lista,busca essa lista de eventos no banco de dados
 		mv.addObject("Eventos",eventos);
 		return mv;
 		
