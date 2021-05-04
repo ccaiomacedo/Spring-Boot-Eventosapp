@@ -2,6 +2,7 @@ package com.eventosapp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,6 +33,14 @@ public class EventosController {
 		mv.addObject("Eventos",eventos);
 		return mv;
 		
+	}
+	@RequestMapping("/{codigo}")//retorna o codigo de cada evento
+	public ModelAndView detalhesEvento(@PathVariable("codigo") Long codigo) {
+		Eventos evento = er.findByCodigo(codigo);//está guardando a ação findByCodigo na variavel evento
+		ModelAndView mv= new ModelAndView("evento/detalhesEvento");
+		mv.addObject("evento",evento);
+		System.out.println("evento"+evento);
+		return mv;
 	}
 	
 }
