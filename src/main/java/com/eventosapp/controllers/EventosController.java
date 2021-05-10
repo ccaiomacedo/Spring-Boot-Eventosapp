@@ -35,10 +35,10 @@ public class EventosController {
 		
 	}
 	@RequestMapping("/{codigo}")//retorna o codigo de cada evento
-	public ModelAndView detalhesEvento(@PathVariable("codigo") Long codigo) {
+	public ModelAndView detalhesEvento(@PathVariable("codigo") Long codigo) {// o @PathVariable é utilizado quando o valor da variável é passada diretamente na URL
 		Eventos evento = er.findByCodigo(codigo);//está guardando a ação findByCodigo na variavel evento
-		ModelAndView mv= new ModelAndView("evento/detalhesEvento");
-		mv.addObject("evento",evento);
+		ModelAndView mv= new ModelAndView("evento/detalhesEvento");//estou especificando qual classe será renderizada
+		mv.addObject("evento",evento);// estou setando evento na variável evento
 		System.out.println("evento"+evento);
 		return mv;
 	}

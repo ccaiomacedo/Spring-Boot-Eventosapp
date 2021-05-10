@@ -1,11 +1,13 @@
 package com.eventosapp.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity //estou declarando essa classe como entidade ,ou seja, ela será a tabela  
 public class Eventos implements Serializable {
@@ -18,7 +20,10 @@ public class Eventos implements Serializable {
 	@Id //passando codigo como chave primaria
 	@GeneratedValue(strategy = GenerationType.AUTO)//colocando pra ele auto implementar
 	private Long codigo;
-
+	
+	@OneToMany
+	private List<Convidado> convidados;
+	
 	public Long getCodigo() {
 		return codigo;
 	}
