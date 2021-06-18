@@ -21,8 +21,6 @@ public class Eventos implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)//colocando pra ele auto implementar
 	private Long codigo;
 	
-	@OneToMany
-	private List<Convidado> convidados;
 	
 	public Long getCodigo() {
 		return codigo;

@@ -17,6 +17,7 @@ public class EventosController {
 	@Autowired //faz injeção de dependências 
 	private EventoRepository er;//pra toda vez que eu usar essa interface ele fazer as instâncias automaticamente
 	
+
 	@RequestMapping(value="/cadastrarEvento",method=RequestMethod.GET) // recebendo uma requisição do tipo get
 	public String form() {
 		return "evento/formEvento";
@@ -34,7 +35,7 @@ public class EventosController {
 		return mv;
 		
 	}
-	@RequestMapping("/{codigo}")//retorna o codigo de cada evento
+	@RequestMapping(value="/{codigo}",method=RequestMethod.GET)//retorna o codigo de cada evento
 	public ModelAndView detalhesEvento(@PathVariable("codigo") Long codigo) {// o @PathVariable é utilizado quando o valor da variável é passada diretamente na URL
 		Eventos evento = er.findByCodigo(codigo);//está guardando a ação findByCodigo na variavel evento
 		ModelAndView mv= new ModelAndView("evento/detalhesEvento");//estou especificando qual classe será renderizada
@@ -42,5 +43,4 @@ public class EventosController {
 		System.out.println("evento"+evento);
 		return mv;
 	}
-	
 }
