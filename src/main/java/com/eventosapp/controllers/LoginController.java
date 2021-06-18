@@ -4,6 +4,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -20,7 +21,7 @@ public class LoginController {
 	@PostMapping("/login")
 	public String login(Usuario usuario,HttpSession session,RedirectAttributes ra) {
 		ModelAndView mv = new ModelAndView();
-		if(usuario.getNome().equals("admin")&&usuario.getSenha().equals("1234")) {
+		if(usuario.getNome().equals("admin")&&usuario.getSenha().equals("admin")) {
 			usuario.setNome("Administrador");
 			//guardar sessao o objeto usuario
 			session.setAttribute("usuarioLogado", usuario);
@@ -49,7 +50,7 @@ public class LoginController {
 		
 	}*/
 
-
+	@GetMapping("/sair")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";
